@@ -1,0 +1,111 @@
+/* /* Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Center layout */
+/*body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+
+/* Main container */
+/*.container {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+/*h2 {
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+/*input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus {
+    border-color: #6c63ff;
+}
+
+/* Count text */
+/*.count {
+    font-size: 18px;
+    margin: 12px 0;
+    font-weight: bold;
+}
+
+/* Button group */
+/*.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Buttons */
+/*.btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+/* Specific buttons */
+/*.increment {
+    background-color: #4caf50;
+}
+
+.increment:hover {
+    background-color: #45a049;
+}
+
+.decrement {
+    background-color: #f44336;
+}
+
+.decrement:hover {
+    background-color: #d32f2f;
+}
+
+.reset {
+    background-color: #2196f3;
+}
+
+.reset:hover {
+    background-color: #1976d2;
+}
+
+.add {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ff9800;
+}
+
+.add:hover {
+    background-color: #fb8c00;
+}
+
+/* Disabled */
+/*button:disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}  */
