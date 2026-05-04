@@ -18,7 +18,7 @@ export default function CreateStudentPage() {
         setLoading(true)
 
         try {
-            await client.post("/student", {
+            await client.post("/students", {
                 ...form,
                 age: Number(form.age),
             })
