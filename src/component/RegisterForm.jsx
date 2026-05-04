@@ -1,76 +1,77 @@
-import { use, useState } from "react";
-//import axios from "axios";
-import { Link, useNavigate } from "react-router-dom"
-import client from "../api/client"
-import axios from "axios";
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import client from '../api/client'
 
-const API_BASE = "http://Localhost:8000"
-export default function RegisterForm({ onSwitchToLogin }) {
-    const [username, setusername] = useState("");
-    const [password, setpassword] = useState("");
-    const [error, seterror] = useState("");
-    const [success, setsuccess] = useState("");
-    const [loading, setloading] = useState(false);
+export default function RegisterForm() {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
-
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        seterror("");
-        setsuccess("");
-        setloading("");
-        try {
-            await axios.post(`${API_BASE}/auth/register`, { username, password });
-            setsuccess("Account created! Redirecting to login ...");
-            setTimeout(() => navigate("/login"), 1500);
-        } catch (err) {
-            seterror(err.response?.data?.detail || "Registration failed");
-            console.log(err);
+        e.preventDefault()
+        setError('')
+        setSuccess('')
+        setLoading(true)
 
+        try {
+            await client.post('/auth/register', { username, password })
+            setSuccess('Account created! Redirecting to login...')
+            setTimeout(() => navigate('/login'), 1500)
+
+        } catch (err) {
+            setError(err.response?.data?.detail || 'Registration failed')
         } finally {
-            setloading(false);
+            setLoading(false)
         }
-    };
+    }
+
     return (
         <div className="sma-auth-card">
             <h2 className="sma-auth-title">Create Account</h2>
-            <p className="sma-auth-subltitle">Register to get started</p>
+            <p className="sma-auth-subtitle">Register to get started</p>
 
             {error && <div className="sma-alert sma-alert-error">{error}</div>}
             {success && <div className="sma-alert sma-alert-success">{success}</div>}
+
             <form onSubmit={handleSubmit} className="sma-form">
                 <div className="sma-form-group">
                     <label className="sma-label">Username</label>
                     <input
                         type="text"
-                        value={username}
                         className="sma-input"
-                        onChange={(e) => setusername(e.target.value)}
-                        placeholder="choose a username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Choose a username"
                         required
                     />
                 </div>
                 <div className="sma-form-group">
                     <label className="sma-label">Password</label>
-                    <input type="password"
+                    <input
+                        type="password"
                         className="sma-input"
                         value={password}
-                        onChange={(e) => setpassword(e.target.value)}
-                        placeholder="choose a password"
-                        required />
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Choose a password"
+                        required
+                    />
                 </div>
-                <button type="submit"
-                    className="sma-btn sam-btn-primary sma-btn-full"
-                    disabled={loading || !username || !password}>
-                    {loading ? "creating account..." : "create account"}
+                <button
+                    type="submit"
+                    className="sma-btn sma-btn-primary sma-btn-full"
+                    disabled={loading || !username || !password}
+                >
+                    {loading ? 'Creating account...' : 'Create Account'}
                 </button>
             </form>
+
             <p className="sma-auth-switch">
-                Already have an account{" "}
-                <Link
-                    type="button"
-                    className="sma-auth-switch-btn" to={"/login"}>Sign in</Link>
+                Already have an account?{' '}
+                <Link to="/login" className="sma-auth-switch-btn">Sign in</Link>
             </p>
         </div>
-    );
+    )
 }
